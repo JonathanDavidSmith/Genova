@@ -1,0 +1,6 @@
+Tom	Jones		19
+Jim	Peterson	44
+James	Patterson	87
+Bill	Winters		62
+Emily	Summers		15
+Andy Griffith	6

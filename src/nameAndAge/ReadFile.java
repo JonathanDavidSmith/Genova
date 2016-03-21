@@ -11,9 +11,9 @@ public class ReadFile {
 	{
 		path = file_path;
 	}
-	
+	//throwing exception here to help address any errors in file reading.
 	public String[] OpenFile() throws IOException
-	{
+	{	
 		FileReader fr = new FileReader(path);
 		BufferedReader textReader = new BufferedReader(fr);
 		
@@ -21,12 +21,12 @@ public class ReadFile {
 		String[] textData = new String[numberOfLines];
 		
 		int i;
-		
+		//a loop to go through the number of lines within the given text files. 
 		for (i=0; i < numberOfLines; i++)
 		{
 			textData[i] = textReader.readLine();
 		}
-		
+		//closing the reader to reduce memory leak
 		textReader.close();
 		return textData;
 	}
@@ -38,11 +38,12 @@ public class ReadFile {
 		
 		String aLine;
 		int numberOfLines = 0;
-		
+		//while there is information, it will take the number of lines and add one more to it.
 		while ((aLine = bf.readLine()) != null)
 		{
 			numberOfLines++;
 		}
+		//closing to reduce memory leak
 		bf.close();
 		return numberOfLines;
 	}

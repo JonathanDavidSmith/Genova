@@ -4,14 +4,16 @@
 
 package nameAndAge;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import java.util.Comparator;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -75,6 +77,27 @@ public class FileData {
 		System.out.println(people);
 
 	}
+	public double calculateAverageAge() 
+	{
+		double sum = 0d;
+		double average = 0d;
+		for (Person person : people) 
+		{
+			sum+= person.getAge();
+		}
+		average = sum/(people.size());
+		System.out.println(average);
+		return average;
+		
+	}
+	
+	public List<Person> alphabetical()
+	{	
+		Collections.sort(people);
+		return people;
+	}
+	
+	
 
 	public List<Person> getPeople() {
 		return people;

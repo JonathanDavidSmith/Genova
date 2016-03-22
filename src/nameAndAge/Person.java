@@ -5,7 +5,9 @@
 
 package nameAndAge;
 
-public class Person 
+import java.util.Comparator;
+
+public class Person implements Comparable<Person> 
 {	//private fields cannot be accessed from outside methods intentionally so they cannot be altered and cause future programs to "blow up".
 	private String fname;
 	private String lname;
@@ -53,6 +55,14 @@ public class Person
 	{
 		return "First Name: " + fname + ",   Last Name: " + lname + ",   age:  " + age + "";
 	}
+
+@Override
+public int compareTo(Person p) {
+	// TODO Auto-generated method stub
+	return (this.lname).compareTo(p.lname);
+}
+
+
 	
 	
 	

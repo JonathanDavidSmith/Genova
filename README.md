@@ -1,21 +1,20 @@
 # Genova
 Java files requested by Genova
 
-**INCOMPLETE APPLICATION**
+This particular application is an answer to the Genova Java code test.
 
-// The Application is, unfortunately, not complete.  
-//It does retrieve data from two text files and combines them
-//in a System.out.print and displays data in the console, however it does not yet accomplish the
-//requirements of alphabetical order for last names, removing first name duplicates, or getting the
-//average age of the given names.
+I've utilized Spring MVC to complete the project.  
+I'm currently utilizing java 1.8.0_74.
 
-It was created as a Dynamic Web App/Maven Project.  
 
-It has the pom.xml, -servlet.xml, and web.xml necessary for what it 
-accomplishes now.  
+1: A "Person" object class was created because the text files contains people and their first name, last name, and age.
 
-There is a basic JSP that utilizes NO css yet.   
+Private Field variables were created for first name, last name, and age.   Getters/Setters were added along with a constructor and a toString().
 
-A basic http servlet request's user name and returns their name to personalize the experience...
-(at least it will be personal when its completed..  its just a text output now).
+2: A DAO was implemented to access all data from the supplied text files.
+Utilizing an arraylist, grabbing line by line, splitting on tab and utilizing []tokens.
+
+3: A controller(Spring) to return information to the front end.
+
+4: index.html and multiple JSP files were used to display the requested information onto  browsers pages. 
 

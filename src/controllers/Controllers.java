@@ -22,6 +22,20 @@ public class Controllers
 		mv.addObject("Names", dao.getPeople());
 		return mv;
 	}
+	@RequestMapping(path="averageAge.do", method = RequestMethod.GET)
+	public ModelAndView calculateAverageAge()
+	{
+		ModelAndView mv = new ModelAndView("average.jsp");
+		mv.addObject("Average", dao.calculateAverageAge());
+		return mv;
+	}
+	@RequestMapping(path="alphabetical.do", method = RequestMethod.GET)
+	public ModelAndView alphabetical()
+	{
+		ModelAndView mv = new ModelAndView("alphabetical.jsp");
+		mv.addObject("alphabetical", dao.alphabetical());
+		return mv;
+	}
 	
 	
 }

@@ -38,7 +38,7 @@ public class ReadFile {
 		
 		String aLine;
 		int numberOfLines = 0;
-		//while there is information, it will take the number of lines and add one more to it.
+		//while there is information on another line still available, it will take the number of lines and add one more to it.
 		while ((aLine = bf.readLine()) != null)
 		{
 			numberOfLines++;

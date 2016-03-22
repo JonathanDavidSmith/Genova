@@ -7,11 +7,13 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   </welcome-file-list>
   
   <servlet>
-  	<servlet-name>TheServletName</servlet-name>
-	<servlet-class>nameAndAge.Greeting</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>TheServletName</servlet-name>
-  	<url-pattern>/Greeting</url-pattern>
-  </servlet-mapping>
+		<servlet-name>Genova</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Genova</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

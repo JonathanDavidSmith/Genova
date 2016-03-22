@@ -1,6 +1,4 @@
-<!-- A simple form to gather the user's name and have them submit the data.   The java logic, when completed, will
-address the user personally and be able to return specific data based on their input. 
- -->
+
 <!DOCTYPE html>
 <head>
 	<title>Genova Code Test</title>
@@ -12,10 +10,8 @@ address the user personally and be able to return specific data based on their i
 	
 	<main>
 	
-	<form action="Greeting" method="GET">
-		First Name:<input type="text" name="fName" /> 
-<!-- 	Last Name:<input type="text" name="lName" /> -->		
- 		<input type="submit" value="Click Submit" />
+	<form action="names.do" method="GET">
+		<input type="submit" value="Show Names" />
 	</form>
 	</main>
 	

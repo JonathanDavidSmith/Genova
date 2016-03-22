@@ -1,67 +1,86 @@
-// Application is, unfortunately, not complete.  It does retrieve data from two text files and combines them
-//in a System.out.print and displays data in the console, however it does not yet accomplish the
-//requirements of alphabetical order for last names, removing first name duplicates, or getting the
-//average age of the given names.
+//This file is acting as my DAO. (Data access object)
+//I'm dramatically refactoring the original program, but did not want to change the file name to avoid any GitHub drama ( I know a force push can be invoked, I'd just
+//rather make this as smooth as possible for now since I'm on a time crunch!) :)
+
 package nameAndAge;
 
-import java.io.File;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import java.util.Comparator;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 public class FileData {
-	
 
-	public static void main(String[] args) throws Exception
-	{		//importing the two text files given by the recruiter/Genova.
-			File file_name1 = new File("../Genova/src/NameList1.txt");
-			File file_name2 = new File("../Genova/src/NameList2.txt");
-			
-			//taking the filename and creating variables that are easier for me to remember.
-			Scanner readerL = new Scanner(file_name1);
-			Scanner readerR = new Scanner(file_name2);
-			
-			//next line method goes through each line in the text file.
-			String line1 = readerL.nextLine();
-			String line2 = readerR.nextLine();
-			
-			// while the lines that are being read are not empty, they will have some type of output.
-			//below here is where I would have entered logic to get the average age/alphabetical order requests
-			while (line1 != null || line2 != null) 
-			{
-			    if (line1 == null) 
-			    {
-			      System.out.println("file2: " + line2);
-			      line2 = readLine(readerR);
-			    } 
-			    else if (line2 == null)
-			    {
-			      System.out.println("file1:  " + line1);
-			      line1 = readLine(readerL);
-			    } 
-			    //here is where I began to enter logic to explore comparison for alphabetical order.
-			    else if (line1.compareToIgnoreCase(line2) <= 0)
-			    {
-			      System.out.println("file1:  " + line1);
-			      line1 = readLine(readerL);
-			    } 
-			    else 
-			    {
-			      System.out.println("file2: " + line2);
-			      line2 = readLine(readerR);
-			    }
-			  }
-			//closing reader to reduce memory leak
-			  readerL.close();
-			  readerR.close();
+	private static final String names1 = "/WEB-INF/NameList1.txt";
+	private static final String names2 = "/WEB-INF/NameList2.txt";
+	private List<Person> people = new ArrayList<>();
+
+	@Autowired
+	private ApplicationContext ac;
+
+	@PostConstruct
+	public void init() {
+		// Retrieve an input stream from the application context rather than
+		// directly from the file system.
+		// ..... This try/catch imports "Namelist1.txt"
+		try (InputStream is = ac.getResource(names1).getInputStream();
+				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
+
+			String line;
+			int counter = 0;
+			while ((line = buf.readLine()) != null) {
+				if (!(counter == 0)) {
+					System.out.println(line);
+					String[] tokens = line.split("\\t");
+					String fName = tokens[0].trim();
+					String lName = tokens[1].trim();
+					Integer age = Integer.parseInt(tokens[2].trim());
+					people.add(new Person(fName, lName, age));
+				}
+
+				counter++;
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		// ..... The following try/catch imports "Namelist2.txt"
+
+		try (InputStream is = ac.getResource(names2).getInputStream();
+				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
+
+			String line;
+			int counter = 0;
+			while ((line = buf.readLine()) != null) {
+
+				if (!(counter == 0)) {
+					System.out.println(line);
+					String[] tokens = line.split("\\t");
+					String fName = tokens[0].trim();
+					String lName = tokens[1].trim();
+					Integer age = Integer.parseInt(tokens[2].trim());
+
+					people.add(new Person(fName, lName, age));
+				}
+				counter++;
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		System.out.println(people);
+
 	}
-	//a method to return the next line, if there is one available.  
-	private static String readLine(Scanner reader) 
-	{
-		if(reader.hasNextLine())
-			return reader.nextLine();
-		else
-			return null;
+
+	public List<Person> getPeople() {
+		return people;
 	}
-	
+
+	public void setPeople(List<Person> people) {
+		this.people = people;
+	}
 }
-			    

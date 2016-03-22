@@ -8,9 +8,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -99,11 +100,45 @@ public class FileData {
 		return people;
 	}
 //	This (NOT YET COMPLETE..DOES NOT WORK) method counts the number of first names that are duplicated.
-		public int duplicates()
-		{	//FINISH THIS METHOD
-			
-		}
 	
+//	public int getDupCount(ArrayList<Person> people)
+//	{
+//		int count = 0;
+//		Map<String, Integer> unique = new HashMap<>(people);
+//		
+//		for (Person p : people)
+//		{
+//			if (Collections.frequency(people, p) > people)
+//				count++;
+//		}
+//	}
+//	
+	
+	//this method below prints duplicated names to the console successfully.
+	//commenting it out because I'm working on a different method that will
+	//produce similar results in a return statement.
+	public String duplicates() 
+	{ 	
+		Map<String, Integer> unique = new HashMap<>(1);
+		int i = 0;
+		for (Person p : people)
+		{
+			if(unique.containsKey(p.getFname()))
+			{	
+				System.out.println(p.getFname());
+				 i = unique.get(p.getFname());
+						unique.put(p.getFname(), i + 1);
+				i++;
+			}
+			else
+			{
+				unique.put(p.getFname(), 1);
+			}
+		}
+		return i + "";
+		
+	}
+        
 	//	this method returns the entire arraylist of "people".
 	public List<Person> getPeople() {
 		return people;

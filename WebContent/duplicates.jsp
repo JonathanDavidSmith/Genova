@@ -28,12 +28,18 @@
 	<form action="alphabetical.do" method="GET">
 		<input type="submit" value="Alphabetize Last Names" />
 	</form>
-
+	
+	<p>This button shows the number of duplicate first names</p>
+	<form action="duplicates.do" method="GET">
+		<input type="submit" value="Duplicated First names" />
+	</form>
 </header>
 
 <main>
 
-	<p>${counter}</p>
+	<p>There are ${duplicates} duplicated First Names within the given text files.
+	</p>
+	
 	
 </main>
 

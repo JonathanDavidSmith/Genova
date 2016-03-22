@@ -27,10 +27,11 @@
 	
 <!-- 	The method logic for the following form is not yet complete.
  -->	
- <!-- <p>This button shows the number of duplicate first names</p>
+ 
+		<p>This button shows the number of duplicate first names</p>
 	<form action="duplicates.do" method="GET">
 		<input type="submit" value="Duplicated First names" />
-	</form> -->
+	</form>
 	
 	<main>
 	

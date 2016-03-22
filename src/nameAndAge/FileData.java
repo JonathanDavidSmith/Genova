@@ -99,10 +99,26 @@ public class FileData {
 		return people;
 	}
 //	This (when completed) method counts the number of first names that are duplicated.
-//		public List<Person> duplicates()
-//		{
-//			
-//		}
+		public int duplicates()
+		{	int counter = 0;
+			for (int i = 0; i < people.size(); i++) 
+			{
+				System.out.println("inside first loop. The first name is: " + people.get(i).getFname() + i);
+			
+				for (Person person : people) 
+				{	//System.out.println("Persons name to be compared is: " + person.getFname() + " second name is: " + people.get(i).getFname());
+					if ((person.getFname())==(people.get(i).getFname()));
+					{
+//						System.out.println("inside counter. Found Duplicate. The first name is: " + person.getFname() + i);
+
+						counter++;
+					}
+				
+			} 
+			}
+			System.out.println(counter);
+			return counter;
+		}
 	
 	//	this method returns the entire arraylist of "people".
 	public List<Person> getPeople() {

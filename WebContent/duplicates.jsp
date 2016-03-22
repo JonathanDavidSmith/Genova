@@ -32,9 +32,8 @@
 </header>
 
 <main>
-	<c:forEach var = "duplicates" items = "${duplicates}">
-		 <c:out value=" ${people.fname }"/><p>
-	</c:forEach>
+
+	<p>${counter}</p>
 	
 </main>
 

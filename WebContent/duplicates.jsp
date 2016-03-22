@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Alphabetical Order</title>
+<title>Number of Duplicate First names</title>
 </head>
 <body>
+<header>
+
 <header>
 	<p>Welcome! I'm glad you're here.<br>
 	The following buttons will display information based on requirements for the java code test.</p>
@@ -27,14 +28,25 @@
 	<form action="alphabetical.do" method="GET">
 		<input type="submit" value="Alphabetize Last Names" />
 	</form>
+
+</header>
+
 <main>
-	
-
-	<c:forEach var = "people" items = "${alphabetical}">
-		 <c:out value=" ${people.fname } ${people.lname} ${people.age }"/><p>
+	<c:forEach var = "duplicates" items = "${duplicates}">
+		 <c:out value=" ${people.fname }"/><p>
 	</c:forEach>
-
+	
 </main>
+
+
+
+
 
 </body>
 </html>
+
+
+
+
+
+

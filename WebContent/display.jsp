@@ -6,25 +6,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Super awesome name list</title>
+<title>Original file data</title>
 </head>
 <body>
 <header>
-	<h1>Welcome!</h1>
+	<p>Welcome! I'm glad you're here.<br>
+	The following buttons will display information based on requirements for the java code test.</p>
+	 </header>
+	<p>This button will just show all the information given via text files.</p>
 	<form action="names.do" method="GET">
-		<input type="submit" value="Show Names" />
+		<input type="submit" value="Show All Names" />
 	</form>
-	<!-- <form action="averageAge.do" method="GET">
+	
+	<p>This button will simply display the average of all the ages given on the text files.</p>
+	<form action="averageAge.do" method="GET">
 		<input type="submit" value="Get average age" />
-	</form> -->
-
-</header>
+	</form>
+	
+	<p>This button will put the list of names in alphabetical order based on the last names.</p>
+	<form action="alphabetical.do" method="GET">
+		<input type="submit" value="Alphabetize Last Names" />
+	</form>
+	<main>
+	
 
 	<c:forEach var = "people" items = "${Names}">
 		 <c:out value="${people}"/><p>
 	</c:forEach>
 	
 
+	</main>
 
 
 

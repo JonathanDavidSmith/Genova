@@ -1,6 +1,5 @@
 //This file is acting as my DAO. (Data access object)
-//I'm dramatically refactoring the original program, but did not want to change the file name to avoid any GitHub drama ( I know a force push can be invoked, I'd just
-//rather make this as smooth as possible for now since I'm on a time crunch!) :)
+//Here I import and manipulate data in order to display to the user. 
 
 package nameAndAge;
 
@@ -9,20 +8,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class FileData {
 
+public class FileData {
+	//here we are creating private final variables that cannot be changed from outside classes. 
+	//we will be using these variables for importing the two text files and instantiating a new arraylist for the data to be stored.
 	private static final String names1 = "/WEB-INF/NameList1.txt";
 	private static final String names2 = "/WEB-INF/NameList2.txt";
 	private List<Person> people = new ArrayList<>();
-
+	
 	@Autowired
 	private ApplicationContext ac;
 
@@ -77,6 +79,7 @@ public class FileData {
 		System.out.println(people);
 
 	}
+	//this method calculates the average age utilizing a foreach loop through the array of people.
 	public double calculateAverageAge() 
 	{
 		double sum = 0d;
@@ -88,17 +91,20 @@ public class FileData {
 		average = sum/(people.size());
 		System.out.println(average);
 		return average;
-		
-	}
-	
+		}
+	//this method puts the last names in alphabetical order
 	public List<Person> alphabetical()
 	{	
 		Collections.sort(people);
 		return people;
 	}
+//	This (when completed) method counts the number of first names that are duplicated.
+//		public List<Person> duplicates()
+//		{
+//			
+//		}
 	
-	
-
+	//	this method returns the entire arraylist of "people".
 	public List<Person> getPeople() {
 		return people;
 	}

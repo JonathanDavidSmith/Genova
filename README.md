@@ -23,4 +23,4 @@ Utilizing an arraylist, grabbing line by line, splitting on tab and utilizing []
 6: There is no CSS utilized at this time.
 
 7: The application is hosted on my personal AWS server.  The working URL is currently
-    " http://jonathandsmith.com:8080/Genova/ "
+     http://jonathandsmith.com:8080/Genova/ 
